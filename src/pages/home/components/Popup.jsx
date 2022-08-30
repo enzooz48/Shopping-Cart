@@ -20,13 +20,12 @@ function Popup({ product, handleClose }) {
 								<img className="d-none" href={product.img3} alt="" />
 							</div>
 							<div className="col-lg-6">
-								<a
+								<button
 									className="close p-4"
 									type="button"
-									onClick={handleClose}
-									href="#">
+									onClick={handleClose}>
 									×
-								</a>
+								</button>
 								<div className="p-5 my-md-4">
 									<h2 className="h4">{product.name}</h2>
 									<p className="text-muted">
@@ -36,11 +35,11 @@ function Popup({ product, handleClose }) {
 									<p className="text-small mb-4">{product.short_desc}</p>
 									<div className="row align-items-stretch mb-4">
 										<div className="col-sm-5 pl-sm-0 fix_addwish">
-											<a
+											<button
 												className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"
 												href="#">
 												<i className="far fa-heart mr-2"></i>Add Too Wish List
-											</a>
+											</button>
 										</div>
 									</div>
 								</div>

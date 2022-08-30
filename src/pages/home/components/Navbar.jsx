@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import LoginLink from '../../login/LoginLink';
@@ -10,17 +10,18 @@ import Name from '../../logout/Name';
 import { userLogin } from '../../../redux/action/ActionUser';
 
 function Navbar() {
+	//State Active Navbar
 	const [active, setActive] = useState('Home');
+
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
 
-	//Get loginInfo & nameInfo từ LocalStorage
+	//Get loginInfo & nameInfo from LocalStorage
 	const loginInfo = localStorage.getItem('USER_INFO');
 	const nameInfo = localStorage.getItem('name_user');
 
-	// Sau khi F5 nó sẽ kiểm tra nếu phiên làm việc của LocalStorage vẫn còn thì nó sẽ tiếp tục
-	// đưa dữ liệu vào Redux
+	// If User is  logged in
 	if (loginInfo) {
 		const action = userLogin(JSON.parse(loginInfo));
 		dispatch(action);
@@ -68,8 +69,13 @@ function Navbar() {
 						</li>
 					</ul>
 					<ul className="navbar-nav ml-auto">
-						<li className="nav-item">
-							<div className="nav-link" onClick={() => navigate('/cart')}>
+						<li className="nav-item" onClick={() => setActive('Cart')}>
+							<div
+								className="nav-link"
+								onClick={() => navigate('/cart')}
+								style={
+									active === 'Cart' ? { color: '#dcb14a' } : { color: 'black' }
+								}>
 								<i className="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
 							</div>
 						</li>

@@ -15,11 +15,14 @@ import './css/custom.css';
 import './css/Global-Style.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Chat from './pages/chat/Chat';
+import Navbar from './pages/home/components/Navbar';
+import Footer from './pages/home/components/Footer';
 
 function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
+				<Navbar />
 				<Routes>
 					<Route exact path="/" element={<Home />} />
 					<Route path="/shop" element={<Shop />} />
@@ -29,6 +32,7 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 				</Routes>
+				<Footer />
 			</BrowserRouter>
 
 			<Chat />

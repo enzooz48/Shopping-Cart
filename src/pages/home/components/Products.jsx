@@ -11,12 +11,17 @@ function Products() {
 
 	// Fetch all products
 	useEffect(() => {
+		let isMounted = true;
 		const fetchData = async () => {
 			const response = await ProductAPI.getAPI();
 			const data = response.data.splice(0, 8);
-			setProducts(data);
+			if (isMounted) setProducts(data);
 		};
 		fetchData();
+
+		return () => {
+			isMounted = false;
+		};
 	}, []);
 	// Lấy dữ liệu từ Redux
 	const { isOpen, product } = useSelector((state) => state.modal);
@@ -63,9 +68,7 @@ function Products() {
 										</div>
 										<h6>
 											{' '}
-											<a className="reset-anchor" href="#">
-												{product.name}
-											</a>
+											<div className="reset-anchor">{product.name}</div>
 										</h6>
 										<p className="small text-muted">
 											{product.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') +
