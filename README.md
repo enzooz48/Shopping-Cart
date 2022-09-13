@@ -1,4 +1,3 @@
-# Assignment 03: Xây dựng Website thương mại điện tử
 
 **Project Link** - ***https://rjs301x-asgm3.netlify.app/***
 
